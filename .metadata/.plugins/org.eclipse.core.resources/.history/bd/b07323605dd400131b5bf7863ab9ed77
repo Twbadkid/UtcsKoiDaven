@@ -1,0 +1,21 @@
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.net.Socket;
+import java.net.UnknownHostException;
+
+public class myClient {
+
+	public static void main(String args[]) {
+		try {
+			Socket clientSocket = new Socket("61.31.108.99", 27104);
+			OutputStreamWriter toServer = new OutputStreamWriter(
+					clientSocket.getOutputStream());
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}
