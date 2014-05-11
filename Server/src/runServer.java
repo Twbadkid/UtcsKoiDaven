@@ -26,6 +26,7 @@ class mainServer extends Thread {
 					+ "Time: " + date.getTime() + "\n").getBytes("UTF-8"));
 			System.out.println("User: " + user[0] + " Connected, Time: "
 					+ date.getTime());
+			System.out.println(in);
 			outToClient.close();
 			inFromClient.close();
 			connectIn.close();
