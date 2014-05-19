@@ -8,7 +8,6 @@
 <fullyQualifiedTypeName name="android.widget.Button"/>
 <fullyQualifiedTypeName name="android.view.View.OnClickListener"/>
 <fullyQualifiedTypeName name="android.util.Log"/>
-<fullyQualifiedTypeName name="com.utcs.koi.location.R.id"/>
 <fullyQualifiedTypeName name="android.os.Handler"/>
 <fullyQualifiedTypeName name="android.os.Message"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
@@ -21,4 +20,18 @@
 <fullyQualifiedTypeName name="android.location.LocationListener"/>
 <fullyQualifiedTypeName name="java.net.URL"/>
 <fullyQualifiedTypeName name="java.net.URLConnection"/>
+<fullyQualifiedTypeName name="com.mysql.jdbc.Connection"/>
+<fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="java.sql.DriverManager"/>
+<fullyQualifiedTypeName name="java.sql.Statement"/>
+<fullyQualifiedTypeName name="java.sql.ResultSet"/>
+<fullyQualifiedTypeName name="java.util.Random"/>
+<fullyQualifiedTypeName name="org.json.JSONObject"/>
+<fullyQualifiedTypeName name="org.json.JSONArray"/>
+<fullyQualifiedTypeName name="android.widget.Spinner"/>
+<fullyQualifiedTypeName name="com.utcs.koi.location.R.id"/>
+<fullyQualifiedTypeName name="android.widget.ArrayAdapter"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="android.location.Criteria"/>
 </qualifiedTypeNameHistroy>

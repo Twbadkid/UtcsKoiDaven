@@ -20,4 +20,19 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/Send" />
 
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/rString" />
+
+    <Button
+        android:id="@+id/refresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/Send"
+        android:text="Refresh" />
+
 </RelativeLayout>

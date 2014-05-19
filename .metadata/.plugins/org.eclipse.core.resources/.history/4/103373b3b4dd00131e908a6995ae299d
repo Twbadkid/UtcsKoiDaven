@@ -1,0 +1,49 @@
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.Socket;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.UnknownHostException;
+
+public class myClient {
+
+	public static void main(String args[]) {
+		/*
+		 * try { Socket clientSocket = new Socket("61.31.108.99", 27104); //
+		 * Log.e("TEST", "CON"); DataOutputStream toServer = new
+		 * DataOutputStream( clientSocket.getOutputStream()); BufferedReader
+		 * fromServer = new BufferedReader( new
+		 * InputStreamReader(clientSocket.getInputStream(),"UTF-8"));
+		 * toServer.write("1:koi:uqc76vh8fix3uzukq7\n".getBytes("UTF-8"));
+		 * System.out.println("SEND"); String in = fromServer.readLine();
+		 * System.out.println(in); // System.out.println(fromServer.readLine());
+		 * toServer.close(); fromServer.close(); clientSocket.close(); } catch
+		 * (UnknownHostException e) { // TODO Auto-generated catch block
+		 * e.printStackTrace(); } catch (IOException e) { // TODO Auto-generated
+		 * catch block e.printStackTrace(); }
+		 */
+		String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&sensor=false&key=AIzaSyB6FQZ2zLkw0_pPa_zScW3GNfqWa9sEOig";
+		try {
+			URL urlc = new URL(url);
+			URLConnection conn = urlc.openConnection();
+			conn.connect();
+			BufferedReader in = new BufferedReader(new InputStreamReader(
+					conn.getInputStream()));
+			String read;
+			String json = "";
+			while ((read = in.readLine()) != null) {
+				json += read;
+
+			}
+			JSONObject js = new JSONObject(json);
+			in.close();
+		} catch (MalformedURLException e1) {
+			e1.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}

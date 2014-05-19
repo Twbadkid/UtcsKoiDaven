@@ -1,0 +1,515 @@
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.Socket;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.UnknownHostException;
+
+public class myClient {
+
+	public static void main(String args[]) {
+		/*
+		 * try { Socket clientSocket = new Socket("61.31.108.99", 27104); //
+		 * Log.e("TEST", "CON"); DataOutputStream toServer = new
+		 * DataOutputStream( clientSocket.getOutputStream()); BufferedReader
+		 * fromServer = new BufferedReader( new
+		 * InputStreamReader(clientSocket.getInputStream(),"UTF-8"));
+		 * toServer.write("1:koi:uqc76vh8fix3uzukq7\n".getBytes("UTF-8"));
+		 * System.out.println("SEND"); String in = fromServer.readLine();
+		 * System.out.println(in); // System.out.println(fromServer.readLine());
+		 * toServer.close(); fromServer.close(); clientSocket.close(); } catch
+		 * (UnknownHostException e) { // TODO Auto-generated catch block
+		 * e.printStackTrace(); } catch (IOException e) { // TODO Auto-generated
+		 * catch block e.printStackTrace(); }
+		 */
+		String url = """{
+   "html_attributions" : [],
+   "next_page_token" : "CvQB7AAAAOQ5FgWu82eycAPD98AgIIhZf4cETBTQmxMawMmK20HBvzV4daxnW_Xqa7qQwbdoPQKjL1TO5ARBhmtHQ2eu7D47G4sVEWPUk56KuoDNoBxbMEVuCn0L2Zno69WzjVP-FxF3LKhqfZps02X0zTY2I-JRa_kqp1KRqCmn_T-AOqRNwp3h-gD9JcoMJy540Q6buwZCP8VcrNbfgkvhwjZcNFV2xIuGCYaVL8FMNU5o4lX2pyhi1v5oSK4sisLOOMg8GvCqPVJ7ZoWETRt7Xm-YUJ3k7fbkoorZTAsrtFJx3dA9u9MS8SCOtzXHIp7zV-oQlhIQeqyAIjm4SM4GXs9N_d_rhhoU-vS2slxChKIiqfDdgKoatYLdvk4",
+   "results" : [
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : -33.8599827,
+               "lng" : 151.2021282
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -33.8552624,
+                  "lng" : 151.2031401
+               },
+               "southwest" : {
+                  "lat" : -33.8657895,
+                  "lng" : 151.2000123
+               }
+            }
+         },
+         "icon" : "http://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png",
+         "id" : "92f1bbd4ecab8e9add032bccee40a57a8dfd42b4",
+         "name" : "Barangaroo",
+         "reference" : "CpQBhAAAAHpaQWUhDZCfpOHBtuIbMN0WUc0UHveVrI7X4p_7DBuQVmywls71L9jz96Mlw2YEh-ZdDMUkHZ8sN8txAf-T_PiZpr-zIDjOXQvOpUFIK8toGeQ5VnTzEBEBOwWOyb_kg5mw7kTblnT1EwuMBgEHPZKmIxIUaGH7WR1NtBcF3xW0i0GXP4UgAfcFLLRFawkRMRIQbOhQIiQ3xw1TxmCKSxyGeBoUHf4kTYYb_jEHMvhniSmqvrC9M5c",
+         "types" : [ "locality", "political" ],
+         "vicinity" : "Barangaroo"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : -33.868199,
+               "lng" : 151.194628
+            }
+         },
+         "icon" : "http://maps.gstatic.com/mapfiles/place_api/icons/lodging-71.png",
+         "id" : "44fdc977984610cd873c790a7d850e8185ed0e5e",
+         "name" : "The Star",
+         "opening_hours" : {
+            "open_now" : true
+         },
+         "photos" : [
+            {
+               "height" : 1316,
+               "html_attributions" : [ "From a Google User" ],
+               "photo_reference" : "CoQBdwAAAH8-ntSsz-TyH1BSDUj7K0Rc-Mg3zc6tqkvexd5PJJBph1qmn_RWSSYDhgraGA0rmsBwM6xVQUc5Q-6bwoBBdd6KxYR2LnwBDgpupvptba8ghFzNIODsus95kQDcQz7NkTpYhRZ4kFiRzIk-jWUpvKJkZpUX-v2yIMQQloa30nb7EhB863kXnRm82qqtGgMVs4a_GhRSyogm1JPD55fsS5W6WiE7RlbAKA",
+               "width" : 1800
+            }
+         ],
+         "rating" : 4,
+         "reference" : "CnRpAAAAhnVNJhs5z_gPNnP4E66blPNPls0U96JMT5ht0UM1xSS5E3_SbVbWhdqkhVSuADrkYHyjTqN1ETYBzB_JDKVYEjgcbkQk9Ka1sETcz6U1-suabEG7wmLIb7WJLuTIWxPGGipNMGtz-J1z7YUdJMOd6hIQWLfedxlKXhoBHWSXcKoz9BoUmq-60v4F9erAzV6PHuXEG7uH54I",
+         "types" : [ "lodging", "establishment" ],
+         "vicinity" : "80 Pyrmont St, Pyrmont"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : -33.869509,
+               "lng" : 151.198637
+            }
+         },
+         "icon" : "http://maps.gstatic.com/mapfiles/place_api/icons/museum-71.png",
+         "id" : "45ffedee792e73666af7df087facf2ddb4509085",
+         "name" : "Australian National Maritime Museum",
+         "opening_hours" : {
+            "open_now" : false
+         },
+         "photos" : [
+            {
+               "height" : 794,
+               "html_attributions" : [],
+               "photo_reference" : "CnRnAAAAFjEwoS9xxCItOG9Cp4ly6TuAt1__rJD7gqrqqOOiSWHavjzkhk9zCQnHhrNZGh2ft-abVlAaXrlr23BszoE_ktXKKvWP4f_A9shiwU01bfLVHufVxNt4s-PHrY8xUB6PX_OkNM8eIC3jcxHQ71v0hRIQ9eUAAljIWIURqF8WeOBmqhoUMQ0_GbLKimidxRbzUy-r3eokizI",
+               "width" : 1191
+            }
+         ],
+         "rating" : 4.2,
+         "reference" : "CpQBhAAAAKfziUQTVwxwdXUp2-Gxd3JCf3WQcSxgNqD2RtCAi-JzRX_U0JJYoO-otM1isajxQZfVMRa_T6yiUOUdmrPifXZcEp_Rq9292gccnMJzLXeLfGByw1aVrb9j-Um6bWyfZMNRU9uDooD2CXAA5FWhxwQGUbOH_aE97jv0qup8Tn7KDA8CAGGFlMi_R03Ku4CemRIQwBNLg-F595HZEkRQhAadnxoUzXZmdmMlQvj654GqB7YfCZ9-8bk",
+         "types" : [ "museum", "establishment" ],
+         "vicinity" : "2 Murray St, Sydney"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : -33.868375,
+               "lng" : 151.19625
+            }
+         },
+         "icon" : "http://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+         "id" : "172b11b0164ac9ae1f16c6802ed759445f6eacb7",
+         "name" : "Sydney Lyric Theatre",
+         "photos" : [
+            {
+               "height" : 428,
+               "html_attributions" : [],
+               "photo_reference" : "CnRnAAAAJ1qnhebVoaa35f_osc3tkxPgT_1dk7_tasp7ogt-uy82xaXlNRuMRG3jCdtvaYH0jRvHESgoG9rGBzH1fUq8tU08n9cQAGFBbjxO4cNmYpo3hMKJuWnaZppMyOc2mhfLrzZl9aGGAtuO7OHGzAraYBIQEXdpNjXAX9c0i1XNhMzMsxoUQ00GO9hJ7QrsEfxA_JFpLgtVVQc",
+               "width" : 588
+            }
+         ],
+         "rating" : 4.2,
+         "reference" : "CoQBdgAAAFcMHRhtOIZ70XMwGBT9VxaGUtWgqcobxt5Nf7z16dNHrA0Tdf2oqYdqfwywD37_AFk8Ah3VAoWlXU4KJBqkaFdrkI9JUD5ywVtEjgEQcjiBG4dQUimVYbTQXf9vMY8Uvt8vQmKZmV3FId5uRLFqq0LSBMR41PeBbYXhJYdx8u3YEhBG1-05fL6F9JHHqDzeMsrnGhR6dQWVCRly0W7S-SZBwJFDk06zEA",
+         "types" : [ "establishment" ],
+         "vicinity" : "Pirrama Rd, Sydney"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : -33.870736,
+               "lng" : 151.197699
+            }
+         },
+         "icon" : "http://maps.gstatic.com/mapfiles/place_api/icons/lodging-71.png",
+         "id" : "64725a86605e7682a694c5383338e95b8993b398",
+         "name" : "Ibis Sydney Darling Harbour",
+         "photos" : [
+            {
+               "height" : 588,
+               "html_attributions" : [],
+               "photo_reference" : "CnRnAAAAPJlSGcmrNEDnUGS2eINjiZkmjX1Ea_2QedhnlhAzcsbsD62xIERYnAqfqidWRhRMlqiaUcFiA5yWfw5S4KwdN84k1zWFFv4EQL-zAAwMYwquagxVeNS6xCu7U8lZAkMiLR9_k_Q4NwGMAz8Ai9FT9hIQLI0UGwGM5gh_OXmMpSVJhxoUkfSTYar7FVV2MM-9eF8Bbb-7tks",
+               "width" : 1000
+            }
+         ],
+         "rating" : 2.7,
+         "reference" : "CoQBfQAAAMP2gZUzAJVv_X_BsUkexRlY7_jnwMREpfeqAkVEsHN30p4vZrVR1CIcc2o-oierxQY4PNqF3_QigdViVDDkEixhjUHI8KoOTrsPhWP04jf6o1A6rddyhPkTaWvuWRkxvXDfGP145pO2DZ1sNIeKnneye2ioV01zgj35jreXe9qiEhARKdy91t8orJCHWNE1bthMGhR_bKcm3OOUw875CrcCMJWRFAkurg",
+         "types" : [ "lodging", "establishment" ],
+         "vicinity" : "70 Murray St, Pyrmont"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : -33.868046,
+               "lng" : 151.196938
+            }
+         },
+         "icon" : "http://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+         "id" : "d7f221892dcdb49e5c5eda856dc58661e5bd76e9",
+         "name" : "Pyrmont Bay Park",
+         "reference" : "CoQBcQAAAPEJrPprxTIxTFEBuvD_rgJayVqMfXaqmaWoPKGArYzOsP6GvZQoRyk3jv5J_mXtqvcmhDaVqjj-xAGGd6dyKPB_my5sdpCqGs0BfsIx8OHf9pSxRYK-7NTqk56VH36AUEbfghpuySCYEEy6Eu96yMywyXrSvAZeUOBMYtsqWIbJEhAbr-8Kbe63zM-JgHhhYmTYGhSNYSyJqiQ0bvvwAw1f5dZRNltWug",
+         "types" : [ "park", "establishment" ],
+         "vicinity" : "50 Pirrama Rd, Pyrmont"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : -33.868256,
+               "lng" : 151.1947
+            }
+         },
+         "icon" : "http://maps.gstatic.com/mapfiles/place_api/icons/lodging-71.png",
+         "id" : "8d3d1de1853d3f71bde4abce55f34d8b08bc0778",
+         "name" : "The Darling",
+         "photos" : [
+            {
+               "height" : 1632,
+               "html_attributions" : [ "From a Google User" ],
+               "photo_reference" : "CnRoAAAAHktZJrPza8c8NsYZVaHUgRtu2vakYRF0GUXLkTEAZUulIjjQVdLMKHNV0O0cvrrwHE_a-FnP7MSgWnTu8cItP-ca4NaUrmGwOWGYai4n_QubVCXS0gX0Vl-NenMQW2zH_IRI1HKaphTwhfreHeLtOBIQ02-iQ2B5CQaaO_-ju6SUvhoUEg4iKXumRgf9Ss-GhIu7M8ZAIy4",
+               "width" : 920
+            }
+         ],
+         "rating" : 3.7,
+         "reference" : "CnRsAAAAjsw0CwPTnz03eXiNI02kFc5nh4OPznF70VbWHF0G-_P_wQmGI931t5KDXAyoXf783Xz0989FZJoKbZSnzOIH6D0mL_55wW6TW34La6r-XZkBHi5dz02QFd_e7krZzrYoHxD4cEQ6tnu1t536WLy5HRIQC-Fy-BYIf5_6cGnYW3u3OBoUQeQe8EWzmeMBI4aXMj-zoV2czWE",
+         "types" : [ "lodging", "establishment" ],
+         "vicinity" : "80 Pyrmont St, Pyrmont"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : -33.866714,
+               "lng" : 151.19557
+            }
+         },
+         "icon" : "http://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+         "id" : "4f89212bf76dde31f092cfc14d7506555d85b5c7",
+         "name" : "Google Sydney",
+         "photos" : [
+            {
+               "height" : 400,
+               "html_attributions" : [],
+               "photo_reference" : "CnRuAAAAQhMXMrWOb8mamTCvfHaYTRQoK1Y_rxdJx47Cl0PfADTI40ek1N1Sio3IrmZPb6uHYZolWvqtFfs2mI3yYWDI1rIMDwlGThVzg_HokDLzaFE-lW0l0PNDRlSHDihusFsDTfucONxn5GtRFp603acZEhIQg01l_cl1VnbZR20CgrTPWxoUXg1E6BtAInyxjkaHP7ObgGLxPCM",
+               "width" : 401
+            }
+         ],
+         "rating" : 4.5,
+         "reference" : "CnRvAAAA5-xipBPdH3lObhsGzwtKo4p0EOGZyy3-3kUzHNd36rykV4loqEbHNtpC1D6wK3dbYkkHvbYB7cXuCbs5d7_CvYY3FNTiggniocz6Ks4hopfoqChxfP55BwwPMK7DkN9Ss24bNb_aiXUWrdQFOvLjwhIQq6qtijPMao4p1cb5ZZxRoBoUqYw8OmVWXbVf7NVfSbY5NtJIckE",
+         "types" : [ "establishment" ],
+         "vicinity" : "5/48 Pirrama Rd, Pyrmont"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : -33.87123,
+               "lng" : 151.199092
+            }
+         },
+         "icon" : "http://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+         "id" : "6237ce126ba1afabd5985b059d3d1eca6e9ee0da",
+         "name" : "Blue Fish",
+         "opening_hours" : {
+            "open_now" : true
+         },
+         "photos" : [
+            {
+               "height" : 225,
+               "html_attributions" : [],
+               "photo_reference" : "CnRnAAAAyIh_PwBl99GgVkuXAqnyWAJm_K7XgKO-RNX8kAxa87V40cCS4LONFQ22sh05vmSLbKg-ymrg5nUghN3miffzFMKRKq2uOVobbd-sjAzPuxCFMssqAvjWHoCBAMO-nTof-DyULTRUOWMPWBn2QxNXHhIQyZv5-IgoZU9toIbuuScurBoUWGVgk-W4R2yBKQX3PcsKlvDVq18",
+               "width" : 400
+            }
+         ],
+         "price_level" : 2,
+         "rating" : 4.2,
+         "reference" : "CnRrAAAAYVQHdVJxUfpZjjiNxfu_hsH2am4aI_7C6DXKduKNlRjiAKMAFpb3t4e1QZv5GBlZ1lmhL2qZd-9YxdRgY-DYnhgJmNfyKq5uuIzjkBkV_P6WHMQ3mbb2fSSdL2WVhARiU5EyFrFkd7YA4XItTX3IRhIQ8a9EJPXN6kf9RzR2ga3LRxoUF1-5LgdH-e_00WZ9FOVYbogVTBA",
+         "types" : [ "restaurant", "food", "establishment" ],
+         "vicinity" : "Harbourside Shopping Centre/287 Darling Dr, Sydney"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : -33.865776,
+               "lng" : 151.194251
+            }
+         },
+         "icon" : "http://maps.gstatic.com/mapfiles/place_api/icons/bar-71.png",
+         "id" : "05bf6e9aa18b35f174f5076c348ce8e91e328aba",
+         "name" : "Flying Fish Restaurant & Bar",
+         "opening_hours" : {
+            "open_now" : true
+         },
+         "photos" : [
+            {
+               "height" : 500,
+               "html_attributions" : [],
+               "photo_reference" : "CnRtAAAA11acVdLwNNMBJ-Jh1iy4iIdgHK0a1gMIaaXXen2tZcz0BXiJs9-MZSHUxAwH5hJ6k5UpL4nqd6b0GA1qe9QJbBZCp2k79TpWTu5X2WMwe7ZKPB776thYWwey8gi8ON1L01T1bdPcPkpvnyLCOpUjrxIQX_y-XViNvjPQoy8inQUf3RoU10KRGbMMAFV6AcIy1i4IU4G5SFs",
+               "width" : 500
+            }
+         ],
+         "price_level" : 1,
+         "rating" : 4.6,
+         "reference" : "CoQBfQAAAJ95SnutMi8evq3vYrQ1Bcvz_xq6pTY6m7L4rEO1I1BfzaVL8Tv7VQq04hs30c-pR8w2Nd6JIcLA5SMzOhQC_YG7j1ohWiqQ2B2BxfsT7UN4ZTBNiBIpKKG9UFjru2EWcM8hCssucj6H2KQiDGS89uffbZ_b31sraniB1pfwfYneEhD37qolFWUBt3zEm_mrR199GhQn_9ONXdO_FPQ19QWg0EmaVSl_CQ",
+         "types" : [ "bar", "restaurant", "food", "establishment" ],
+         "vicinity" : "19-21 Pirrama Rd, Pyrmont"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : -33.86771,
+               "lng" : 151.191917
+            }
+         },
+         "icon" : "http://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+         "id" : "989df9aadca97a738b18e81d11d05603015cafc9",
+         "name" : "John St Square Supermarket",
+         "reference" : "CoQBewAAAFyXqPMcZY1PE-0iGa4a9vRffV8IUvv4kEyVrK9_r_mjFCSS6VyPHVDVpu4wJBSIr_bf5MQL3LqpVML_otsHn4VueF5RHrbrtfteVC5BTKHcPqm1sbTBDNjlgRtVti5Tb8j1dCVEwjZieVEtH1rK330Yc9pqT6Bme2DVhkjXzDFzEhAAlTRmWTaV4CTHcbjGjszkGhTxDtGFrg6mqMxeOhrDzD3k5rPYUw",
+         "types" : [ "food", "store", "establishment" ],
+         "vicinity" : "8/45-55 Harris St, Pyrmont"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : -33.87054,
+               "lng" : 151.198815
+            }
+         },
+         "icon" : "http://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+         "id" : "c71365287e7606bd21a3311d21fda087830b7813",
+         "name" : "Pancakes on the Rocks",
+         "opening_hours" : {
+            "open_now" : true
+         },
+         "photos" : [
+            {
+               "height" : 1224,
+               "html_attributions" : [ "From a Google User" ],
+               "photo_reference" : "CnRoAAAAdATkbVO2efOOIDEEN06jzH3vpdWu3uHei3NFrKkRI4rlKNbsMbEwM1vnxZsPJB2yo8O2Ufa4oQC3B3Syil19HKrNgXQPjB7GolBewNx9qHSQ7ivsXmEfbgQ-VvoZWUuq9EbuXWaqddJ7DlcTRbiDEBIQaCRT1qECfhQtuWYlaGKpsRoUJ0y0LrYXph8INH9NQZiyzTiXqaE",
+               "width" : 1632
+            }
+         ],
+         "price_level" : 2,
+         "rating" : 3.7,
+         "reference" : "CoQBdgAAAOJmCyD-2ln4GhwLV7CWGgksr1k8P8L0NLl2ShmTcqqXGQRhvPTAv-YIY6q28mv7qGcrLfQaAzUy3_H1inyvRnrqAmaTOjoKOVpvBbCyWLJsW9E9X-fbCMuTldBhcC0YVxmBudfyIemXUSL5hpB0ZN3w0G1-rQ4RwFppqJ-Xj2EDEhD3qNC136e1DXQgtk1P13etGhS8du2h5kHw1TDRDjZ5MUlewI451w",
+         "types" : [ "bakery", "store", "meal_takeaway", "food", "establishment" ],
+         "vicinity" : "Harbourside Shopping Centre,Darling Harbour,227/229-230 Darling Dr, Sydney"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : -33.870353,
+               "lng" : 151.197892
+            }
+         },
+         "icon" : "http://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+         "id" : "e58f0f9ecaf15ab719d305b93265cafc00b01a3f",
+         "name" : "The Little Snail",
+         "opening_hours" : {
+            "open_now" : true
+         },
+         "photos" : [
+            {
+               "height" : 535,
+               "html_attributions" : [ "From a Google User" ],
+               "photo_reference" : "CnRkAAAAOj7ng1hyShwX-82wuPuMlM7aDkw1tICL9nlodviQcSD-d8P-vQ2KS3ff0HYn4WLfShHdMRiVVbO4CkDK5QaS5VG14-qcMcjS6MVnYvZ5C1tFW7Kln36xYiDHIGDxr1nOVNrYhQx5vuw8WTMfqPAaXxIQGzk1wPhHFIwCVhQciad9XBoUDg8J7Ueo7v99sOr613QiLkzKwqI",
+               "width" : 800
+            }
+         ],
+         "price_level" : 2,
+         "rating" : 4.1,
+         "reference" : "CoQBcQAAAKQB0OFVVrgv8HHATq0yJT7lFnu6VePWp_NMpuosT7tKkxtVv8XeLX0zghk3lpRS4iylV3Zd8SbGGogp926kmU7nkuVs6hZ4SblGZE1BsH1yYNQDbQfjWIEbVei-zhiIiCKsJ49j8UPps8pUe0hhjuwC3qu6-1hR1XBy01s-korpEhDSrlwhVOqN9Fe1mWn1J_mBGhQTcDi8Iz8TutVOm-AKlJxegIUgiw",
+         "types" : [ "restaurant", "food", "establishment" ],
+         "vicinity" : "50 Murray St, Pyrmont"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : -33.871114,
+               "lng" : 151.199042
+            }
+         },
+         "icon" : "http://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+         "id" : "ddd678ac0a16d83fdc25500ccb3d6aa27b7f5548",
+         "name" : "Darling Harbour",
+         "opening_hours" : {
+            "open_now" : false
+         },
+         "photos" : [
+            {
+               "height" : 768,
+               "html_attributions" : [ "From a Google User" ],
+               "photo_reference" : "CnRoAAAAb0I43frNpnpSG9u-u6qtD0yCfftyPiu_mK3uSZxa-uwoaIqFq7sAwx4P6rlP27KXiTGzvaMk4Dz09YswktJeSWX3PQdN_bY5_3pzetbgH0LxAdLyx3xq9p-4EOsJwxD4viTz065gglgdTj3wXHbFbhIQxFbLvMKJprEC-sjBvrtiFxoUKomSfrku6mnVRF1CtmGTksyzUYc",
+               "width" : 1024
+            }
+         ],
+         "rating" : 4.5,
+         "reference" : "CnRwAAAAJeinbyqNijzxG2Q2vxQK3yegSDlmpSsZ_p7VjKWKvLiJmxkH_3OZm4KBvx59NnQbnIVKhc3lHW6204cSvZOgomkURFRpK6_ZAMra9YGpaU-0h8h8pY4YNa_SHBoFe5cOncl5ZIdORd1NTfLI3iffXxIQiUZ4ZKTLF3r9XOtSNK7lLxoU9CtxG21a4sH9CWQ1ijwBJx2bg_M",
+         "types" : [ "establishment" ],
+         "vicinity" : "Sydney"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : -33.865663,
+               "lng" : 151.19128
+            }
+         },
+         "icon" : "http://maps.gstatic.com/mapfiles/place_api/icons/bar-71.png",
+         "id" : "78b3ab3969c71d9c4ca369a4c54e64291bc48013",
+         "name" : "Sugaroom",
+         "opening_hours" : {
+            "open_now" : true
+         },
+         "photos" : [
+            {
+               "height" : 459,
+               "html_attributions" : [],
+               "photo_reference" : "CnRnAAAAOyvcxECOXJc9mQV2UsRGZ6SYjDYCvoKWkP6mAmosOnEeAZOqR3nfe4nYXCIyx7v-kI4a-ecUKFpJ_vNlAhNXwkpyV-_ewwdpDxLJcYtr84bANGMTw25nKF75I66NxXvzM66ZAmkC5NXKeRoMqDNKtRIQ96uEkI6zcONQts3g25h5SxoUm3KCwr2h11SRJkLNHfvBK1NmTCg",
+               "width" : 612
+            }
+         ],
+         "price_level" : 2,
+         "rating" : 4,
+         "reference" : "CnRqAAAAmboTnthPFSonacFyEuguXzn-qTfcwAt3dtyU7CKb9jmPV4DnmYXb8225mnhS9MRA-XDn9qaPkMZI54AqqXylAabPHWEwzxINAhzj4PRi1w2qxS0jClWWcY4vZYRl2ewMuwo930615alPTFqMRx2EzhIQsGEe3LZRnkOnd7vCp0-18RoUQODtA9k0bnviXzxBWH1N26Y0Iik",
+         "types" : [ "night_club", "bar", "restaurant", "food", "establishment" ],
+         "vicinity" : "2/1 Harris St, Pyrmont"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : -33.866469,
+               "lng" : 151.196047
+            }
+         },
+         "icon" : "http://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+         "id" : "4d716a646c32978aa12d1057dcf9f503a20195c0",
+         "name" : "Signorelli Gastronomia",
+         "opening_hours" : {
+            "open_now" : true
+         },
+         "photos" : [
+            {
+               "height" : 2048,
+               "html_attributions" : [ "From a Google User" ],
+               "photo_reference" : "CnRqAAAAXsqt7UWcGlDKOwuNz87yoYUeVnk7uplUQ2npNh_GhgPfvt95X0d2VU1krqgIsYLeLQFYJhky77V4LDuNCaEUGd9-s_aYLii2CRwbldlhc86bva1LQheGRdFMSp91eawEkrOXN0qpMTkX03HCzrW8GhIQjQPmuLhy-rjmwAPF5T_hTBoU9EHdbD1tWSFoESUkNVrOioCqzlM",
+               "width" : 1530
+            }
+         ],
+         "price_level" : 1,
+         "rating" : 3.7,
+         "reference" : "CoQBeAAAAMu1MVgYfTCjVx6jGHQfkNdLVkdr8h3Vn9TPckpb8GLuVN5j8vyYd25pOg8HYvUjM-DeTvscb1LgKkFEtYz6gZ15uO0YVxKnaqjc9PIjulwImYeQoouFLhmy3dEohybKnBFzfe42mBnMS2Qsebijh6lPLUYQvkeYSOm1HvoRlmpiEhD_fCUEgbtY7YpIfrFS0vCtGhThpTnCBBS99ARyBldKd5fMFj02Jw",
+         "types" : [ "restaurant", "food", "establishment" ],
+         "vicinity" : "48 Trouton Pl, Pyrmont"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : -33.869883,
+               "lng" : 151.197726
+            }
+         },
+         "icon" : "http://maps.gstatic.com/mapfiles/place_api/icons/bar-71.png",
+         "id" : "c2075046e4cb0763631f4d8a562f88fe8500ba25",
+         "name" : "Pyrmont Bridge Hotel",
+         "opening_hours" : {
+            "open_now" : true
+         },
+         "photos" : [
+            {
+               "height" : 536,
+               "html_attributions" : [],
+               "photo_reference" : "CnRnAAAAt3X6qJwf-dmTtnrVqrvZABD-UAigeeI7pZg3r6ik-FrgBZZ3sAgDVU7-NvWO73Uh13TOVlmGMOrUTqkp1UpMeoNtApyD4QQXM0BSbUH2eAo2WlvuhdFTI5oKMRnafok5EJUUgrcXLoEiKOfzKVpO-BIQ_8suyYUWxwF2_qVLafSGbRoUQQD1wdqazVd9UItSPJmtLRp9S2k",
+               "width" : 800
+            }
+         ],
+         "price_level" : 1,
+         "rating" : 3.6,
+         "reference" : "CoQBdgAAAPCsJAr65Q_5DKIbbocl4zcwQcHaq7sDRITsXME5Cj6usvSTgavNpm2SeGK12DkCDJ4iLKn8j7pGYsc638vSa4I80KzHadxg5xehP_ZXMDf-S3KYRxI1OyHgEvK8VPOWt5enDjTavdzsg5E9Ofla3ARs6DB5UCi7ykrPYDBrG8iQEhCzZ--lWRILCoGozmXQe3xUGhQCmJm0pbakwKlDE5ElbYgS5idf9g",
+         "types" : [ "bar", "restaurant", "food", "establishment" ],
+         "vicinity" : "96 Union St, Pyrmont"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : -33.871313,
+               "lng" : 151.198908
+            }
+         },
+         "icon" : "http://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png",
+         "id" : "4a511547092a8d296e805b131a9fc07416cf5751",
+         "name" : "T-Bar",
+         "opening_hours" : {
+            "open_now" : true
+         },
+         "rating" : 3.9,
+         "reference" : "CnRmAAAAhglWif00ic2k1g3o4crB6sVSik_Ozg5kw2wn4DrDZdh-VokAdzhfgYCtTtNeIZh6rB7gZWjmqUDDCNkmMENgPiuL0xQ7X_-xZcAV4C6CsSvPxFs3JGqdHuM3n-neQpeBWGKykYtLYe6lq3271P-uGBIQIUdF61QLlXv1TsYNSHEmOhoUm1aVmy5kvPUmt7UyIS8zteFeEbo",
+         "types" : [ "clothing_store", "store", "establishment" ],
+         "vicinity" : "Shop 273A Harbourside Shopping Centre/2-10 Darling Drive, Darling Harbour"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : -33.869431,
+               "lng" : 151.19474
+            }
+         },
+         "icon" : "http://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+         "id" : "394a5a7b80f3561aea264fec6563de2974bd7385",
+         "name" : "Cafe XXII",
+         "opening_hours" : {
+            "open_now" : true
+         },
+         "photos" : [
+            {
+               "height" : 816,
+               "html_attributions" : [ "From a Google User" ],
+               "photo_reference" : "CnRpAAAA1Szj8wdDQ631fOyrzcD3YfGAIQsCj-h224-0OKi64d9l3yqhlp_7KM_4WjB1nmChIjQTNq-SvWVDoS3ehgWXHlnMekdqrVDKDRsPC861ngpX-UTMEccGpT-C-4U69gr2-DxKTXCvMQDP05NNn5KogxIQlv_1CEaA136D3mE4JHaB1BoUpQsjOHpTH-NovOF-VgHK2enR7tA",
+               "width" : 612
+            }
+         ],
+         "rating" : 4.2,
+         "reference" : "CnRqAAAAID0qpQSHyuOgYisWAGK1gagXImDn128kP6_zNJLHkhQErC5XVwdfwfVgcQYdIp52GHRqwaqiUMOddNdd5Q5Xc_uUl2sGptGvhtJlo-2nGnNNMBYhdmmsjYC8YlUQxIEomt2o13C4nqearW3nBrceUxIQ12LxnY7t-yXx_3Cfhxz8ABoUp2djqlNIWpz6sPculpnWu7o8Bns",
+         "types" : [ "restaurant", "food", "establishment" ],
+         "vicinity" : "22 Union St, Pyrmont"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : -33.8695456,
+               "lng" : 151.1945404
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -33.8623819,
+                  "lng" : 151.1989734
+               },
+               "southwest" : {
+                  "lat" : -33.8762122,
+                  "lng" : 151.1860651
+               }
+            }
+         },
+         "icon" : "http://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png",
+         "id" : "40840d476baa531e0227a353b1bef70262f66e7e",
+         "name" : "Pyrmont",
+         "reference" : "CpQBgQAAAPzVDHpOKzLyPuyVkqt2NxwUMLtabvtiKWfpjR5lc4v6FC3jbqPdyklXd22yqPMNCJAOD6dRSwhpmTJWTxsIQ1TdZYhnOjtNtUCmGWsgs2TwFa40Kd31U9rRLiVzSauenkuz6-TAUXv3qpbKxreDWxb9hQyti1jaqwdKzcaW6kAqKg-17pSyKglEaz77TlkIThIQtkW_PSq5XJW4qTktJNT1mRoUx7I7I9gfY05D9nSUUMHTslRXi_Q",
+         "types" : [ "locality", "political" ],
+         "vicinity" : "Pyrmont"
+      }
+   ],
+   "status" : "OK"
+}""";
+	}
+}

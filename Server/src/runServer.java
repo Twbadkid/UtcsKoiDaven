@@ -4,13 +4,87 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Date;
+import java.util.Random;
 
 class mainServer extends Thread {
 	Socket connectIn;
+	Connection conn;
 
-	mainServer(Socket connectIn) {
+	mainServer(Socket connectIn, Connection conn) {
 		this.connectIn = connectIn;
+		this.conn = conn;
+	}
+
+	private String setPrivate(String username) {
+		String pri = "";
+		try {
+			pri = createPrivate();
+			Statement stmt = conn.createStatement();
+			String query = "update mytrip_user set check_id='" + pri
+					+ "' where user_id='" + username + "'";
+			stmt.executeUpdate(query);
+			stmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return pri;
+	}
+
+	private String createPrivate() {
+		String base = "abcdefghijklmnopqrstuvwxyz0123456789";
+		Random random = new Random();
+		StringBuffer sb = new StringBuffer();
+		for (int i = 0; i < 18; i++) {
+			int number = random.nextInt(base.length());
+			sb.append(base.charAt(number));
+		}
+		return sb.toString();
+	}
+
+	private String getPrivate(String username) {
+		String re = "";
+		try {
+			Statement stmt = conn.createStatement();
+			String query = "select check_id from mytrip_user where user_id='"
+					+ username + "'";
+			ResultSet rs = stmt.executeQuery(query);
+			while (rs.next()) {
+				re = rs.getString(1);
+			}
+			rs.close();
+			stmt.close();
+		} catch (SQLException e) {
+			return re;
+		}
+		return re;
+	}
+
+	private int checkUser(String username, String password) {
+		int re = -1;
+		try {
+			Statement stmt = conn.createStatement();
+			String query = "select password from mytrip_user where user_id='"
+					+ username + "'";
+			ResultSet rs = stmt.executeQuery(query);
+			while (rs.next()) {
+				if (rs.getString(1).matches(password)) {
+					re = 0;
+				} else {
+					re = 1;
+				}
+			}
+			rs.close();
+			stmt.close();
+		} catch (SQLException e) {
+			return re;
+		}
+		return re;
 	}
 
 	public void run() {
@@ -20,18 +94,41 @@ class mainServer extends Thread {
 			DataOutputStream outToClient = new DataOutputStream(
 					connectIn.getOutputStream());
 			String in = inFromClient.readLine();
+			// System.out.println(in);
 			String user[] = in.split(":");
+			String callback = "";
+			switch (user[0]) {
+			case "0":
+				String username = user[1];
+				String password = user[2];
+				int re = checkUser(username, password);
+				if (re == 0) {
+					callback = "0:" + setPrivate(username) + ":";
+				} else {
+					callback = "403:auth fail:";
+				}
+				break;
+			case "1":
+				username = user[1];
+				String privatekey = user[2];
+				if (privatekey.matches(getPrivate(username))) {
+					callback = "1:login:";
+				} else {
+					callback = "402:need to auth again";
+				}
+				break;
+			default:
+				callback = "999:command not found";
+				break;
+			}
 			Date date = new Date();
-			outToClient.write(("Get String from: " + connectIn.getInetAddress()
-					+ "Time: " + date.getTime() + "\n").getBytes("UTF-8"));
-			System.out.println("User: " + user[0] + " Connected, Time: "
-					+ date.getTime());
+			outToClient.write((callback + "Time:" + date.getTime() + "\n")
+					.getBytes("UTF-8"));
 			System.out.println(in);
 			outToClient.close();
 			inFromClient.close();
 			connectIn.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -40,9 +137,23 @@ class mainServer extends Thread {
 public class runServer extends Thread {
 	private static int start = 1;
 	static ServerSocket server;
+	static Connection conn;
+
+	public static Connection getConnection() throws Exception {
+		// Load the JDBC driver
+		String driver = "com.mysql.jdbc.Driver";
+		Class.forName(driver);
+
+		// Create a connection to the database
+		String url = "jdbc:mysql://localhost:3306/django_db";
+		String username = "jcon";
+		String password = "0000";
+		return DriverManager.getConnection(url, username, password);
+	}
 
 	public void run() {
 		try {
+			conn = getConnection();
 			ServerSocket server2 = new ServerSocket(27104);
 			server = server2;
 			System.out.println("Server Start , using port : "
@@ -52,12 +163,13 @@ public class runServer extends Thread {
 				Socket connectIn = server.accept();
 				System.out.println("User connect , Ip : "
 						+ connectIn.getInetAddress());
-				mainServer thread = new mainServer(connectIn);
+				mainServer thread = new mainServer(connectIn, conn);
 				thread.start();
 			}
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -73,10 +185,12 @@ public class runServer extends Thread {
 				if (command.matches("/shutdown")) {
 					start = 0;
 					server.close();
+					conn.close();
 					System.out.println("Shutdown the Server");
 				}
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
 		}
 	}
